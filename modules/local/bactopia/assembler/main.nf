@@ -11,7 +11,7 @@ conda_env      = file("${params.condadir}/${conda_name}").exists() ? "${params.c
 process ASSEMBLER {
     tag "${meta.id}"
     label "process_low"
-    label "assemble_genome"
+    label "error_retry"
 
     conda (params.enable_conda ? conda_env : null)
     container "${ workflow.containerEngine == 'singularity' && !params.singularity_pull_docker_container ?
